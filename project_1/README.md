@@ -1,4 +1,4 @@
-# Urban Ministries Project
+# The Urban Ministries Project
 ### Conducted by: Amber Young
 
 ## What is Urban Ministries?
