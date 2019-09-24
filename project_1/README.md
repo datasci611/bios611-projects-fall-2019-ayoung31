@@ -1,11 +1,36 @@
-Amber Young Project 1
+# Urban Ministries Project
+### Amber Young
 
-Urban ministries offers many programs to help support the homeless in the Durham community, including a food pantry, a clothing closet, a community cafe, and more. 
-etc etc
-Sorry there isn't more here yet!!
+## What is Urban Ministries?
+Urban ministries, established in 1983, offers many programs to help support homeless and low-income people in the Durham community. These programs include:
 
-Background description
-Questions to address
-Data source description and 3 variables that may be useful
-description of analysis approach
+* A community shelter, which can accomodate over 140 people a night
+* A community cafe, which offers breakfast, lunch, and dinner daily to the homeless
+* A food pantry, that provides people with groceries, and
+* A clothing closet, that supplies individuals and families with clothing each month.
 
+All together this organization helps about 6,000 people per year with over 4,000 volunteers, and they rely heavily on donations of food and clothing from the community.
+
+## What questions will this project address?
+Some challenges an organization like this faces is knowing "how much" and "when".
+Having answers to these two questions, can help them know when to collect donations, when to hold food/clothing drives, and even when they need to schedules volunteers.
+Therefore, this project seeks to help Urban Ministries understand the trends in their food and clothing distribution by answering questions such as:
+
+* How much food and clothing do they need in supply to make it through a week?
+* How much food and clothing can Urban ministries expect to distribute on any given day of the week?
+* When can they expect to serve larger families who naturally need more resources?
+
+## What information do we have?
+Our dataset includes over 20 years of information on the food pantry and clothing closet.
+Specifically, we have entries for every family or individual that has ever sought assistance from this organization.
+We know the size of each family, how many pounds of food they collected in a visit, and the number of clothing items they obtained. 
+Additionally, we have a date for each entry, from which we can obtain information such as the day of the week.
+These variables can be very helpful in answering some of the project's main questions.
+
+## How will this information be used to accomplish project goals?
+Averages and confidence intervals will be obtained for total pounds of food and clothing items distributed in a week.
+Simple models will be built to predict total pounds of food and clothing items based on the day of the week (Mon-Fri).
+Predictions, with confidence intervals will be displayed in table format and as graphs.
+Additionally, a new variable will be created that indicates whether a family is large (greater than four people),
+and another model will be built to predict the number of large families Urban ministries can expect on a given weekday.
+Finally, we visualize how all of these variables (Daily pounds of food, clothing items, and number of large families) are related.
