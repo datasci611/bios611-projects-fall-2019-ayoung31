@@ -21,7 +21,7 @@ Therefore, this project seeks to help Urban Ministries understand the trends in 
 * When can they expect to serve larger families who naturally need more resources?
 
 ## What information do we have?
-Our dataset includes over 20 years of information on the food pantry and clothing closet.
+The dataset provided by Urban Ministries includes over 20 years of information on the food pantry and clothing closet.
 Specifically, we have entries for every family or individual that has ever sought assistance from this organization.
 We know the size of each family, how many pounds of food they collected in a visit, and the number of clothing items they obtained. 
 Additionally, we have a date for each entry, from which we can obtain information such as the day of the week.
@@ -33,4 +33,4 @@ Simple models will be built to predict total pounds of food and clothing items d
 Additionally, a new variable will be created that indicates whether a family is large (greater than four people),
 and another model will be built to predict the number of large families Urban ministries can expect on a given weekday.
 Predictions, with confidence intervals will be displayed in table format (to be used as a tool by the organization) and as graphs.
-Finally, we visualize how all of these variables (Daily pounds of food, clothing items, and number of large families) are related.
+Finally, we visualize how all of these variables (daily pounds of food, number of clothing items, and number of large families) are related.
