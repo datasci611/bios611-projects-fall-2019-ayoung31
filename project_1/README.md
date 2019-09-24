@@ -27,7 +27,7 @@ We know the size of each family, how many pounds of food they collected in a vis
 Additionally, we have a date for each entry, from which we can obtain information such as the day of the week.
 These variables can be very helpful in answering some of the project's main questions.
 
-## How will this information be used to accomplish project goals?
+## How will this data be used to accomplish project goals?
 Averages and confidence intervals will be obtained for total pounds of food and clothing items distributed in a week.
 Simple models will be built to predict total pounds of food and clothing items distributed based on the day of the week (Mon-Fri).
 Additionally, a new variable will be created that indicates whether a family is large (greater than four people),
