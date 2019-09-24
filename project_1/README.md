@@ -2,7 +2,7 @@
 ### Conducted by: Amber Young
 
 ## What is Urban Ministries?
-Urban ministries, established in 1983, offers many programs to help support homeless and low-income people in the Durham community. These programs include:
+Urban Ministries, established in 1983, offers many programs to help support homeless and low-income people in the Durham community. These programs include:
 
 * A community shelter, which can accomodate over 140 people a night
 * A community cafe, which offers breakfast, lunch, and dinner daily to the homeless
