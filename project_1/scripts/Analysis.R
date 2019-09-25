@@ -107,8 +107,8 @@ ggsave("predictedVisitors.png", visitsPlot)
 
 # foodPounds v. big families
 lbsVbig <- ggplot(filter(dailyVals, totPounds<1500 & numBig <= 15), aes(x=numBig, y=totPounds))+
-  geom_point(color="lightseagreen")+
-  geom_smooth(method=lm, se=F, color="plum4")+
+  geom_point(color="plum4")+
+  geom_smooth(method=lm, se=F, color="lightseagreen")+
   theme_classic()+
   labs(title="Daily Pounds of Food Distributed vs. Number of Large Families", y="Daily Total Pounds of Food", x="Number of Large Families in a Day")
 lbsVbig
