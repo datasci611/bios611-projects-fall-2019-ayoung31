@@ -11,33 +11,36 @@ colnames(df) <- c('dateChar', 'FoodProvidedFor', 'foodPounds', 'clothing')
 ### INITIAL DATA CLEANING AND NEW VARIABLE CREATION ###
 
 df <- df %>%
+  drop_na() %>%
   mutate(date = as.Date(dateChar, "%m/%d/%Y")) %>% #Properly format date variable
   select(-dateChar) %>% #drop the character format date
   mutate(year=format(date, "%Y")) %>% #extract year from date
   filter(year > 1983 & year < 2020) %>% #remove invalid years
   mutate(week=cut(date, breaks = "week")) %>% #create week variable
   filter(foodPounds < 450121) %>% #remove outlier from pounds of food
-  mutate(bigFam = FoodProvidedFor > 4) %>% #create indicator for large families
+  mutate(bigFam = FoodProvidedFor > 5) %>% #create indicator for large families
   mutate(weekday = weekdays(date)) %>% #create day of week variable (mon-sun)
   mutate(weekdayNum = as.numeric(format(date, "%u"))) #create numeric day of week (1-7, mon=1)
-
+  
 weeklyVals <- df %>%
   group_by(week) %>%
-  summarize(totPounds=sum(foodPounds, na.rm=TRUE),totclothes=sum(clothing, na.rm=TRUE))
+  summarize(totPounds=sum(foodPounds),totclothes=sum(clothing))
 
 dailyVals <- df %>% 
   group_by(date, weekday, weekdayNum) %>% 
-  summarize(numBig=sum(bigFam, na.rm=TRUE), totPounds=sum(foodPounds, na.rm=TRUE),totclothes=sum(clothing, na.rm=TRUE))
+  summarize(numBig=sum(bigFam), totPounds=sum(foodPounds),totclothes=sum(clothing), visitors=n()) %>%
+  mutate(propBig = numBig/visitors)
+
 
 ### Weekly analysis ###
 
 #On average, how many pounds of food do they distribute per week?
-avgWeekLbs <- mean(dailyVals$totPounds)
-confLbs <- t.test(dailyVals$totPounds, conf.level=.98)$conf.int
+avgWeekLbs <- mean(weeklyVals$totPounds)
+confLbs <- t.test(weeklyVals$totPounds, conf.level=.95)$conf.int
 
 #On average, how many clothing items do they distribute per week?
-avgWeekClo <- mean(dailyVals$totclothes)
-confClo <- t.test(dailyVals$totclothes, conf.level=.98)$conf.int
+avgWeekClo <- mean(weeklyVals$totclothes)
+confClo <- t.test(weeklyVals$totclothes, conf.level=.95)$conf.int
 
 ### Weekday Analysis ###
 
@@ -46,69 +49,90 @@ poundsDay <- lm(totPounds ~ as.factor(weekdayNum), dailyVals)
 new <- data.frame(c(1,2,3,4,5))
 colnames(new) <- "weekdayNum"
 
-predicted <- data.frame(c("Monday", "Tueday", "Wednesday", "Thursday", "Friday"), predict(poundsDay, new, interval="confidence", level=.98))
+predicted <- data.frame(c("Monday", "Tuesday", "Wednesday", "Thursday", "Friday"), predict(poundsDay, new, interval="confidence", level=.95))
 colnames(predicted) <- c("Weekday", "Predicted", "Lower", "Upper")
 
 lbsPlot <- ggplot(predicted, aes(x=Weekday, y=Predicted))+
   geom_bar(stat="identity", fill="lightseagreen", color="black")+
   theme_classic()+
-  scale_x_discrete(limits=c("Monday", "Tueday", "Wednesday", "Thursday", "Friday"))+
-  labs(title="Predicted Pounds of Food Distributed on each Day of the Week", y="Pounds of Food", x="Day of the Week")
+  scale_x_discrete(limits=c("Monday", "Tuesday", "Wednesday", "Thursday", "Friday"))+
+  labs(title="Average Pounds of Food Distributed on each Day of the Week", y="Average Pounds of Food", x="Day of the Week")
 
 ggsave("predictedPounds.png", lbsPlot)
 
 
-#predict number of large families based on weekday
-large <- lm(numBig ~ as.factor(weekdayNum), data=dailyVals)
-predictBig <- data.frame(c("Monday", "Tueday", "Wednesday", "Thursday", "Friday"), predict(large, new, interval="confidence", level=.98))
+#predict proportion of large families based on weekday
+large <- lm(propBig ~ as.factor(weekdayNum), data=dailyVals)
+predictBig <- data.frame(c("Monday", "Tuesday", "Wednesday", "Thursday", "Friday"), predict(large, new, interval="confidence", level=.95))
 colnames(predictBig) <- c("Weekday", "Predicted")
 
 bigPlot <- ggplot(predictBig, aes(x=Weekday, y=Predicted, group=1))+
   geom_bar(stat="identity", fill="lightseagreen", color="black")+
   theme_classic()+
-  scale_x_discrete(limits=c("Monday", "Tueday", "Wednesday", "Thursday", "Friday"))+
-  labs(title="Predicted Number of Large Families on each Day of the Week", x="Day of the Week", y="Number of Large Families (>4)")
+  scale_x_discrete(limits=c("Monday", "Tuesday", "Wednesday", "Thursday", "Friday"))+
+  labs(title="Average Proportion of Large Families on each Day of the Week", x="Day of the Week", y="Proportion of Large (>5 people) Families")
 
 ggsave("predictedBigs.png", bigPlot)
 
 
 #predict number of clothing items based on weekday
 clothes <- lm(totclothes ~ as.factor(weekdayNum), dailyVals)
-predClothes <- data.frame(c("Monday", "Tueday", "Wednesday", "Thursday", "Friday"), predict(clothes, new, interval="confidence", level=.98))
+predClothes <- data.frame(c("Monday", "Tuesday", "Wednesday", "Thursday", "Friday"), predict(clothes, new, interval="confidence", level=.95))
 colnames(predClothes) <- c("Weekday", "Predicted", "Lower", "Upper")
 
 clothesPlot <- ggplot(predClothes, aes(x=Weekday, y=Predicted, group=1))+
-  geom_bar(stat="identity", fill="lightseagreen", color="black")+
+  geom_bar(stat="identity", fill="plum4", color="black")+
   theme_classic()+
-  scale_x_discrete(limits=c("Monday", "Tueday", "Wednesday", "Thursday", "Friday"))+
-  labs(title="Predicted Number Clothing Items Distributed on each Day of the Week", x="Day of the Week", y="Number of Clothing Items")
+  scale_x_discrete(limits=c("Monday", "Tuesday", "Wednesday", "Thursday", "Friday"))+
+  labs(title="Average Number Clothing Items Distributed on each Day of the Week", x="Day of the Week", y="Average Number of Clothing Items")
 
 ggsave("predictedClothes.png", clothesPlot)
+
+
+#predict number of families from day of week
+visits <- lm(visitors ~ as.factor(weekdayNum), dailyVals)
+predVisits <- data.frame(c("Monday", "Tuesday", "Wednesday", "Thursday", "Friday"), predict(visits, new, interval="confidence", level=.95))
+colnames(predVisits) <- c("Weekday", "Predicted", "Lower", "Upper")
+
+visitsPlot <- ggplot(predVisits, aes(x=Weekday, y=Predicted, group=1))+
+  geom_bar(stat="identity", fill="tomato1", color="black")+
+  theme_classic()+
+  scale_x_discrete(limits=c("Monday", "Tuesday", "Wednesday", "Thursday", "Friday"))+
+  labs(title="Average Number Families on each Day of the Week", x="Day of the Week", y="Average Number of Families")
+
+ggsave("predictedVisitors.png", visitsPlot)
 
 
 ### Useful visualizations ###
 
 # foodPounds v. big families
-lbsVbig <- ggplot(filter(dailyVals, totPounds<1500, numBig < 15), aes(x=numBig, y=totPounds))+
-  geom_point()+
-  geom_smooth(method=lm, se=F)+
+lbsVbig <- ggplot(filter(dailyVals, totPounds<1500 & numBig <= 15), aes(x=numBig, y=totPounds))+
+  geom_point(color="lightseagreen")+
+  geom_smooth(method=lm, se=F, color="plum4")+
+  theme_classic()+
   labs(title="Daily Pounds of Food Distributed vs. Number of Large Families", y="Daily Total Pounds of Food", x="Number of Large Families in a Day")
+lbsVbig
 
 ggsave("poundsVnumLarge.png", lbsVbig)
 
 
 # clothing v big families
-cloVbig <- ggplot(filter(dailyVals, numBig <15), aes(x=numBig, y=totclothes))+
-  geom_point()+
-  geom_smooth(method=lm, se=F)+
+cloVbig <- ggplot(filter(dailyVals, numBig <= 15), aes(x=numBig, y=totclothes))+
+  geom_point(color="plum4")+
+  geom_smooth(method=lm, se=F, color="lightseagreen")+
+  theme_classic()+
   labs(title="Daily Number of Clothes Distributed vs. Number of Large Families", x="Number of Large Families in a Day", y="Daily Total Number of Clothes")
+cloVbig
 
 ggsave("clothesVnumLarge.png", cloVbig)
 
 
 #clothing v totPounds v numBig
-cloVlbsVbig <- ggplot(filter(dailyVals, totPounds < 1500 & totclothes > 0 & totPounds > 0 & numBig <= 15), aes(x=totPounds, y=totclothes))+
+cloVlbsVbig <- ggplot(filter(dailyVals, totPounds < 1500 & totclothes > 0 & totPounds > 0 & numBig <= 15), aes(y=totPounds, x=totclothes))+
   geom_point(aes(color=numBig))+
-  labs(title="Daily Number of Clothes Distributed vs. Number Clothes Distributed", color="Number of\nLarge Families\nin a Day", y="Daily Total Number of Clothes", x="Daily Total Pounds of Food")
+  theme_classic()+
+  scale_color_gradientn(colors=c("tomato1", "white"))+
+  labs(title="Daily Number of Clothes Distributed vs. Pounds of food Distributed", color="Number of\nLarge Families", x="Daily Total Number of Clothes", y="Daily Total Pounds of Food")
+cloVlbsVbig
 
 ggsave("clothesVpoundsVnumBig.png", cloVlbsVbig)
