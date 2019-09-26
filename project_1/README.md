@@ -31,5 +31,5 @@ These variables can be very helpful in answering some of the project's main ques
 Averages and confidence intervals will be obtained for total pounds of food and clothing items distributed in a week.
 Average total pounds of food and clothing items distributed based on the day of the week (Mon-Fri) will be graphed to understand trends.
 Additionally, a new variable will be created that indicates whether a family is large (greater than five people),
-and another model will be built to predict the number of large families Urban ministries can expect on a given weekday.
-Finally, we visualize how all of these variables (daily pounds of food, number of clothing items, and number of large families) are related.
+and the average number of large families Urban ministries can expect on a given weekday will be graphed.
+Finally, a plot will be used to show how all of these variables (daily pounds of food, number of clothing items, and number of large families) are related.
