@@ -8,7 +8,7 @@ output: html_document
 ##### Created by: Amber Young
 
 ```{r echo=FALSE, results="hide"}
-df <- data.frame(c("Pounds of Food", "Items of Clothing"), c(1665, 710), c(1595, 688), c(1737, 732))
+df <- data.frame(c("Pounds of Food", "Items of Clothing"), c(1591, 587), c(1496, 559), c(1686, 614))
 colnames(df) <- c(" ", "Average", "Lower Bound", "Upper Bound")
 ```
 
@@ -21,21 +21,30 @@ Urban Ministries, established in 1983, offers many programs to help support home
 * A food pantry, that provides people with groceries, and
 * A clothing closet, that supplies individuals and families with clothing each month.
 
-All together this organization helps about 6,000 people per year with over 4,000 volunteers, and they rely heavily on donations of food and clothing from the community.
+All together this organization helps about 6,000 people per year with over 4,000 volunteers. They rely heavily on donations of food and clothing from the community.
 
 ## What questions will this project address?
 Some challenges an organization like this faces is knowing "how much" and "when".
-Having answers to these two questions, can help them know when to collect donations, when to hold food/clothing drives, and even when they need to schedules volunteers.
+Having answers to these two questions can help them know when to collect donations, when to hold food/clothing drives, and even when they need to schedules volunteers.
 Therefore, this project seeks to help Urban Ministries understand the trends in their food and clothing distribution by answering questions such as:
 
 * How much food and clothing do they need in supply to make it through a week?
 * How much food and clothing can Urban ministries expect to distribute on any given day of the week?
 * When can they expect to serve larger families who naturally need more resources?
 
-## Keeping up with the crowds
-In an average week, Urban Ministries can expect to distribute about 1,665 pounds of food. In 95% of weeks they will distribute between 1,595 and 1,737 pounds of food. In other words, they will rarely distribute more that 1,717 lbs or less than 1,595 lbs.
+## No Trends in Weekly Totals Throughout the Year
+Looking at total pounds of food and number of clothes distributed by week of the year, there seems to be no distinct trend. This is actually surprising since one may expect Urban Ministries to distribute more clothes or food in weeks closer to christmas or other holidays. All weeks seem to have about the same average number of clothes and pounds of food distributed. We can see this in the following plots.
 
-Additionally, in a week they can expect to distribute about 710 items of clothing. In 95% of weeks they will distribute between 688 and 732 items.
+![](foodVweek.png){width=45%}
+![](clothesVweek.png){width=45%}
+
+In these plots, the trend line is almost completely horizontal, which tells us that there is no change in clothing or food distributed by the week of the year. Therefore, the simplest way to know how much food or clothes Urban Ministries needs in a given week is just the averages.
+
+
+## Average Food and Clothes Needed in a Week
+In an average week, Urban Ministries can expect to distribute about 1,591 pounds of food. In 99% of weeks they will distribute between 1,496 and 1,686 pounds of food. In other words, they will rarely distribute more that 1,686 lbs or less than 1,496 lbs of food in a week.
+
+Additionally, in a week they can expect to distribute about 587 items of clothing. In 99% of weeks they will distribute between 559 and 614 items.
 
 The following table summarizes these results:
 
@@ -44,23 +53,40 @@ library(knitr)
 kable(df)
 ```
 
-## The Friday phenomenon
-Urban Ministries tends to distribute less food and clothes on Mondays, Wednesdays, and Fridays than on Tuesdays and Thursdays. This trend is actually consistent with their hours of operation. They are open for more hours on Tuesday and Thursday than the other days of the week. More surprising, is that they distribute less food and clothing on Fridays than any other day of the week. 
+## The Friday Phenomenon
+To determine how much food or clothing Urban Ministries needs on a given weekday, a simple model was used to predict total daily food and clothing based on day of the week. Surprisingly, they seem to distribute far less food and clothing on Fridays than any other day of the week. In the plots below, we can see these trends. The bars show the predicted values by day of the week, and the lines show a 95% Confidence Interval on these predicted values. This means that we expect 95% of days to be within this range. The star above Friday indicates that the difference between Friday and all other days of the week is statistically significant.
 
 ![](predictedPounds.png){width=45%}
 ![](predictedclothes.png){width=45%}
 
 
-It turns out that, in general, less families visit Urban Ministries on Friday.
+## Explaining the Friday Phenomenon
 
+### Less Visitors on Friday
+It turns out that, in general, we expect to see less families visit Urban Ministries on Friday. (A family is defined as 1 or more people.) We can clearly see this trend in the plot below.
 
 ![](predictedVisitors.png){width=45%}
 
-One big question is: why? Why does Urban Ministries see less people and resource distribution on Fridays? Do they run out of resources by the end of the week? Do the have less volunteers on Friday? The rest of this report will attempt to explain the "Friday Phenomenon."
+This could be a large contributer to why they distribute less food and clothing on Fridays. If less people are coming in, then it makes obvious sense that less product is going out. However, the question remains as to why they see less people on Fridays.
+
+### History of almost no visitors on Friday
+To answer the question of why there tends to be less visitors on Friday, we plot the average number of visitors by weekday split by year for the past 12 years.
+
+![](yearlyDist.png)
+
+As we can see from this plot, there is far less people coming in on Fridays than any other day of the week until about 2017 or 2018. This trend suggests that perhaps there was a change in hours of operation at the ministry. Maybe they were only open on some Fridays, but not all, in the past. Either way, to better understand trends applicable to the present, it may be better to only look at 2018-2019 data when predicting on day of the week. Therefore, the following section better decscribes the trends they can expect on each day of the week.
+
+## Predicted Number of Clothes and Pounds of Food Needed by Day of the Week
+Restricting the data to only 2018 and 2019, we get the following predicted values for number of clothes and pounds of food.
+
+![](updatedLbs.png){width=45%}
+![](updatedClothes.png){width=45%}
+
+We can see that in both cases they tend to distribute more on Tuesdays and Thursdays than on MWF. This is actually reflective of their hours of operation. They are open for more hours on Tuesdays and Thursdays. While this is not so surprising, it is still useful for Urban Ministries to have the predicted values and confidence intervals.
 
 
-## Large families need more resources
-Large families naturally need more of everything. Therefore, the amount of any product distributed is driven by the number of large families that visit that day. On a given day, the more large families that visit Urban Ministries, the more food or the clothing that will be distributed. We can easily see this in the following two graphs:
+## Large Families Need More Resources
+Large families naturally need more of everything. Therefore, the amount of any product distributed is driven by the number of large families that visit that day. On a given day, the more large families that visit Urban Ministries, the more food or the clothing that will be distributed. We can easily see this in the following two graphs. (For this analysis, a large familiy is defined as greater than 5 people). 
 
 ![](poundsVnumLarge.png){width=45%}
 ![](clothesVnumLarge.png){width=45%}
@@ -69,16 +95,13 @@ This next graph summarizes the relationship between all three variables, when th
 
 ![](clothesVpoundsVnumBig.png){width=45%}
 
-## More large families on Fridays
-Since there is such a correlation between the number of large families that visit in a given day and the amount a resources the shelter provides on that day, knowing what days of the week will see a higher proportion of large families is particulary useful for Urban Ministries. In the following graph, we can see that there is a higher proportion of large families coming in for services on Fridays. (A large family being defined as a group of more than 5 people).
+### More large families on Fridays
+Since there is such a correlation between the number of large families that visit in a given day and the amount a resources the shelter provides on that day, knowing what days of the week will see a higher proportion of large families is particulary useful for Urban Ministries. The following plot summarizes the results of this analysis.
 
 ![](predictedBigs.png){width=45%}
 
-## Explanations and conclusions
-In general, the tables and and graphs in this report can help Urban Ministries be better prepared for what to expect in a given week or on a given day.
+In this graph, we can see that we might expect the proportion of large families to be fairly consistent Monday through Thursday. On Friday, we can expect a slightly higher proportion of large families, with a wider confidence interval. Therefore, Urban Ministries may consider saving some extra resources for the end of the week.
 
-Being that Friday is at the end of the week, it's possible that the food pantry and clothing closet tend to run out of items by Friday. This, in combination with the fact that there is usually a higher proportion of large families on this day, it is possible that the large families take up the limited resources available. This would cause Urban Ministries to not be able to provide services for as many families on Fridays.
-
-While this is just one possible explanation of these trends, Urban Ministries should use their field knowledge to come to their own explanations. Answering this question could help them make better use of their Fridays, so that they can better serve the Durham community.
-
+## Conclusions
+This report primarily provides Urban Ministries with tools for knowing "how much" and "when". In general, the tables and graphs in this report can help them be better prepared for what to expect in a given week or on a given day. With this information, they can know when they are running low on items, and when they need to restock. This can help them know when to ask for additional donations, or hold food or clothing drives. Hopefully, these tools help Urban Ministries better serve the Durham community.
 
