@@ -1,6 +1,6 @@
 
 read <- function(){
-  raw <- read_tsv("C:/Users/amyou/Documents/GitHub/bios611-projects-fall-2019-ayoung31/project_2/data/UrbanMinistriesData.tsv") %>% 
+  raw <- read_tsv("https://raw.githubusercontent.com/biodatascience/datasci611/gh-pages/data/project1_2019/UMD_Services_Provided_20190719.tsv") %>% 
     select(c(1,6,7,8)) #only include variables of interest
   
   colnames(raw) <- c('dateChar', 'FoodProvidedFor', 'foodPounds', 'clothing')

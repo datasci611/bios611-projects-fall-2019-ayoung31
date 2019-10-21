@@ -31,3 +31,6 @@ Total pounds of food, Number of clothing items, and Proportion of large families
 The predicted values as well as their confidence intervals will be plotted to understand trends.
 They will also be presented as a table to give urban ministries a tool when preparing for a given day of the week.
 All of this will be displayed in a shiny dashboard that allows the user to choose which item they are interested in predicting (food, clothes, or large families).
+
+
+Dashboard can be found here:  https://ayoung31.shinyapps.io/project_2/
