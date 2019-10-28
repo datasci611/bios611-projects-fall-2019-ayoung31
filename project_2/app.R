@@ -10,7 +10,8 @@ new <- weekpred()
 
 ui = fluidPage(
   
-   titlePanel("Predicted Values of Items by Day of the Week"),
+   h1("Predicted Values of Items by Day of the Week"),
+   h5("This app displays the predicted amount of an item Urban Ministries will distribute by day of the week. The lower and upper values (black lines on the bars of the graph) represent a 95% Confidence Interval for this prediction. This means that on 95% of that day of the week, Urban Ministries can expect to distribute between the lower and upper amount."),
   
    sidebarLayout(
      sidebarPanel(radioButtons("option1", h3("Choose value to predict:"),
