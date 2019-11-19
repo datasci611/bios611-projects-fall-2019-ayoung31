@@ -29,3 +29,8 @@ The data also includes characteristics of shelter clients, such as:
 disability status, age, gender, race, ethnicity, veteran status, etc.
 These will be very useful in calculating summary statistics about what type of people are clients at UM.
 Additionally, we can use these variables to try to predict whether someone will complete the program, or how long they stay.
+
+## Instructions to Run Project Code
+No makefile or dockerfile yet... 
+
+Check out the report in the results folder for some colorful plots.
