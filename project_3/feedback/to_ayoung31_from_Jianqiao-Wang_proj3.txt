@@ -1,0 +1,45 @@
+1. Is the project organized modularly, with Make as the workflow manager?
+
+This project is organized clearly. However, makefile has not been written. You can simply render your Rmarkdown file and run python file by makefile.
+
+2. Does the project use both Python (Pandas specifically) and R (Tidyverse specifically) scripts?
+
+The project use both pandas and tidyverse correctly. Pandas has been used to wrangle data and tidyverse has been used to plot figures from cleaned data.
+
+3. Is Docker used to define execution environments appropriately?
+
+You haven't update a dockerfile on your github. Since docker is only used to define environments on VCL, 'FROM' command maybe enough for this project. You can simply add anaconda on your VCL by Docker.
+
+4. Are the plots appropriate for the data types, the hypotheses being tested, and the points being communicated?
+
+There are many meaningful figures in your report to describe distributions of covariates. If NA is not helpful of your final analysis, you can remove NA in some of your figures. Purpose of analysis is communicated well in readme and final html file.
+
+5. How can the project be organized or documented more clearly?
+
+The project is well-organized. Great job!
+
+6. Is the purpose of the project communicated clearly?
+
+Yes. 
+
+7. Does the purpose of the project make sense from the client’s point of view? How could the project better serve the client?
+
+Yes. The analysis will be very helpful to UMD.
+
+8. Is the source of the data made clear? (Remember that this project can be part of your public portfolios, so people not familiar with UMD may see it).
+
+Yes. You have a very detailed introduction to UMD and description of data.
+
+9. Is the interpretation of figures clearly explained?
+
+Yes. Every plot has meaningful interpretation.
+
+10. Is the purpose and interpretation of analysis steps clearly communicated?
+
+Yes. 
+
+11. Are overall take-home messages clearly communicated?
+
+Yes.
+
+Overall, great job! Remember to complete Models and Prediction part and the dockerfile.
