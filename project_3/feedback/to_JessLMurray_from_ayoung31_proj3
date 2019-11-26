@@ -1,0 +1,45 @@
+Is the project organized modularly, with Make as the workflow manager?
+
+No makefile yet.
+
+Does the project use both Python (Pandas specifically) and R (Tidyverse specifically) scripts?
+
+No python script yet.
+
+Is Docker used to define execution environments appropriately?
+
+Not yet.
+
+Are the plots appropriate for the data types, the hypotheses being tested, and the points being communicated?
+
+Plots are beautiful! Very clear.
+
+How can the project be organized or documented more clearly?
+
+Code could maybe use a few more comments.
+
+Is the purpose of the project communicated clearly?
+
+Yes, in the readme. Once there is a report, it would be nice to see it there as well.
+
+Does the purpose of the project make sense from the client’s point of view? How could the project better serve the client?
+
+Yes, but maybe make it explicit.
+How do your plots help UM?
+How can they use the information from your plots?
+
+Is the source of the data made clear? (Remember that this project can be part of your public portfolios, so people not familiar with UMD may see it).
+
+Yes.
+
+Is the interpretation of figures clearly explained?
+
+I'm sure it will be once there is a report!
+
+Is the purpose and interpretation of analysis steps clearly communicated?
+
+Not yet.
+
+Are overall take-home messages clearly communicated?
+
+Conclusions section of a report.

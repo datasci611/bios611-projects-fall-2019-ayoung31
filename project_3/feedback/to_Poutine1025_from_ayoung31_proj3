@@ -1,0 +1,44 @@
+Is the project organized modularly, with Make as the workflow manager?
+
+Yes, but not complete
+
+Does the project use both Python (Pandas specifically) and R (Tidyverse specifically) scripts?
+
+Yes
+
+Is Docker used to define execution environments appropriately?
+
+Sure
+
+Are the plots appropriate for the data types, the hypotheses being tested, and the points being communicated?
+
+Not sure what plots or hypotheses are bc there is not a report.
+
+How can the project be organized or documented more clearly?
+
+Could use some comments in your python notebook and R script
+
+Is the purpose of the project communicated clearly?
+
+Yes.
+
+Does the purpose of the project make sense from the client’s point of view? How could the project better serve the client?
+
+Not sure. Maybe provide some justification for finding the probability of veteran status?
+How could knowing this help UM?
+
+Is the source of the data made clear? (Remember that this project can be part of your public portfolios, so people not familiar with UMD may see it).
+
+Yes
+
+Is the interpretation of figures clearly explained?
+
+Nope, but I'm sure they will be in the final report.
+
+Is the purpose and interpretation of analysis steps clearly communicated?
+
+Not yet.
+
+Are overall take-home messages clearly communicated?
+
+Add conclusions.

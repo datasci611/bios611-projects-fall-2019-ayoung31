@@ -1,0 +1,45 @@
+Is the project organized modularly, with Make as the workflow manager?
+
+Not quite yet.
+
+Does the project use both Python (Pandas specifically) and R (Tidyverse specifically) scripts?
+
+Yes.
+
+Is Docker used to define execution environments appropriately?
+
+Yes.
+
+Are the plots appropriate for the data types, the hypotheses being tested, and the points being communicated?
+
+Yes. If you are mostly interested in comparing groups (i.e. Veteran/Not veteran),
+maybe consider plotting the proportion/percentages instead of the counts.
+
+How can the project be organized or documented more clearly?
+
+You could use some comments in your python notebook and your Rmd files.
+
+Is the purpose of the project communicated clearly?
+
+Yes
+
+Does the purpose of the project make sense from the client’s point of view? How could the project better serve the client?
+
+Yes. Maybe add some text about how knowing the characteristics of the clients will help UM better serve them.
+Knowing that there are more veterans than non-veterans, what should they consider doing different with their services?
+
+Is the source of the data made clear? (Remember that this project can be part of your public portfolios, so people not familiar with UMD may see it).
+
+Yes
+
+Is the interpretation of figures clearly explained?
+
+Report needs more interpretation of what the figures mean to UM.
+
+Is the purpose and interpretation of analysis steps clearly communicated?
+
+Purpose is there, need more analysis.
+
+Are overall take-home messages clearly communicated?
+
+Could use more to your conclusion to communicate overall messages.
