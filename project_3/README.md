@@ -18,7 +18,7 @@ https://github.com/biodatascience/datasci611/tree/gh-pages/data/project2_2019
 
 ## Purpose of this Project
 The purpose of this project is to provide UM with summary statistics and plots describing the characteristics of people who have used their emergency shelter. 
-Additionally, models are built to predict whether someone will complete the program, and how long they will stay.
+Hopefully, with this information, UM can target its services to better serve its clients.
 
 ## Useful Variables
 Some of the most interesting outcome variables for this project include: Entry Date, Exit Date, and Reason For Leaving.
@@ -28,9 +28,14 @@ The "Reason for Leaving" variable includes information on whether a client compl
 The data also includes characteristics of shelter clients, such as:
 disability status, age, gender, race, ethnicity, veteran status, etc.
 These will be very useful in calculating summary statistics about what type of people are clients at UM.
-Additionally, we can use these variables to try to predict whether someone will complete the program, or how long they stay.
 
-## Instructions to Run Project Code
-No makefile or dockerfile yet... 
+## Instructions to recreate analysis
+The report is already included here in the results folder.
+To recreate this analysis, in any linux environment (such as the VCL), run the following:
 
-Check out the report in the results folder for some colorful plots.
+
+git clone https://github.com/datasci611/bios611-projects-fall-2019-ayoung31.git
+
+cd bios611-projects-fall-2019-ayoung31/project_3
+
+make results/report.html

@@ -23,7 +23,21 @@ This data, provided by Urban Ministries, focuses on their emergency shelter prog
 
 # Purpose
 
-The purpose of this project is to provide UM with summary statistics and plots describing the characteristics of people who have used their emergency shelter. Additionally, models are built to predict whether someone will complete the program, and how long they will stay.
+The purpose of this project is to provide UM with summary statistics and plots describing the characteristics of people who have used their emergency shelter. Hopefully, with this information, UM can target its services to better serve its clients.
+
+# The Data
+The data, provided by Urban Ministries, focuses on their emergency shelter program, and can be found here:
+
+https://github.com/biodatascience/datasci611/tree/gh-pages/data/project2_2019
+
+## Useful Variables
+Some of the most interesting outcome variables for this project include: Entry Date, Exit Date, and Reason For Leaving.
+From the dates we can calculate the length of stay for each person. 
+The "Reason for Leaving" variable includes information on whether a client completed the program set out for them at UM.
+
+The data also includes characteristics of shelter clients, such as:
+disability status, age, gender, race, ethnicity, veteran status, etc.
+These will be very useful in calculating summary statistics about what type of people are clients at UM.
 
 
 # Characteristics of Urban Ministries Shelter Clients
@@ -99,12 +113,7 @@ ggplot(df2, aes(x=days_at_shelter))+
            alpha = .2, fill="red")
 ```
 
-# Models and Predictions
-More to come...
 
 # Conclusions
-Urban Ministries serves a diverse clientele, but some characteristics are more common than others. Knowing this can help them better prepare their facilities for the specific type of clients they see. For example, the majority of their clients are between 40 and 60 years old, and over half of them are disabled in some way. Therefore, job resources they might offer need to target to this slightly older age group, and to those that may be limited either physically or mentally. Additionally, the overwhelming majority of clients are black/African American. This information is very powerful in bringing to light the socioeconomic disparity between races in the Durham area. 
+Urban Ministries serves a diverse clientele, but some characteristics are more common than others. Knowing this can help them better prepare their facilities for the specific type of clients they see. For example, the majority of their clients are between 40 and 60 years old, and over half of them are disabled in some way. Therefore, job resources they might offer need to target to this slightly older age group, and to those that may be limited either physically or mentally. Additionally, the overwhelming majority of clients are black/African American. This information is very powerful in bringing to light the socioeconomic disparity between races in the Durham area. Finally, this project shows that a large number of people are disappearing from the shelter without finding housing or completing the UM program, and we see that most people don't stay at the shelter very long. 
 
-Secondly, we find that a large number of people are disappearing from the shelter without finding housing or completing the UM program, and we see that most people don't stay at the shelter very long.
-
-In the second part of this report, models were built to predict program success and duration of stay based on client characteristics. ...... more to come.
