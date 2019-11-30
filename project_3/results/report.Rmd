@@ -41,7 +41,7 @@ These will be very useful in calculating summary statistics about what type of p
 
 
 # Characteristics of Urban Ministries Shelter Clients
-This section provides some generally information about the characteristics of UM Clients.
+This section provides some general information about the characteristics of UM Clients.
 
 ## Age
 In the plot below, we have the number of UM Clients by age at entry to the shelter. We can see that almost all are under 60 years old and the majority are between 40 and 60. There is also a large amount of people in their 20s.
@@ -99,7 +99,7 @@ ggplot(df3, aes(x=reorder(Reason_for_Leaving, -percent), y=percent, fill=Reason_
 ```
 
 ## Length of Stay at Shelter
-The plot below shows how long people tend to stay at the shelter. We can see that over 65% stay for less than a month, and over 90% stay for less than 100 days. In fact, the average time that a client stays is just about 40 days. The most common occurence is for a client to stay only one day.
+The plot below shows how long people tend to stay at the shelter. We can see that over 90% stay for less than 100 days. In fact, the average time that a client stays is just about 40 days. The most common occurence is for a client to stay only one day.
 ```{r echo=FALSE, message=FALSE, warning=F}
 df2 <- df[df$days_at_shelter != 0,]
 summary(df2$days_at_shelter)
