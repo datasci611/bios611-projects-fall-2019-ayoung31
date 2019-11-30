@@ -6,7 +6,7 @@ output: html_document
 ---
 ```{r echo=FALSE, message=FALSE, warning=FALSE}
 library(tidyverse)
-df <- read_csv("../scripts/cleaned.csv", col_names=T)
+df <- read_csv("../data/cleaned.csv", col_names=T)
 df <- df[,2:49]
 ```
 # Introduction
