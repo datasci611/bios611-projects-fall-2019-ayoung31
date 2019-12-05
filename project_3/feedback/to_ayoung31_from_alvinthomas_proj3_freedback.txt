@@ -1,0 +1,16 @@
+To ayoung31:
+
+Thank you for your feedback. I appreciate the time you spent reviewing my work.
+As you note, some of the technical details of my project were not complete
+at the draft stage, but I was able to fully implement Docker and Make in the
+final version. Thank you for encouraging me to think about the conclusions that
+could be made from my project. I have tried to add some more interpretation to my
+report.
+
+
+Points	Description
+7/7	Feedback was specific – you know exactly what to improve, and what you did well
+6/6	Feedback was “meta” – the feedback went beyond finding typos to helping you with higher-level improvements
+2/2	Feedback was respectful and optimistic – you feel helped and encouraged after reading the feedback
+
+Score: 15/15
